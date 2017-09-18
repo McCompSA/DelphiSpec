@@ -46,6 +46,7 @@ type
     public
       constructor Create(const Value: string; DataTable: IDataTable; const PyString: string); reintroduce;
 
+      function ConvertDiactritics: string;
       property Value: string read FValue;
       property DataTable: IDataTable read FDataTable;
       property PyString: string read FPyString;
@@ -325,7 +326,11 @@ begin
   S := PrepareStep(Value, AttributeClass, RttiMethod.Name, Params);
   RegExMatch := TRegEx.Match(Step.Value, S, [TRegExOption.roIgnoreCase]);
   if not RegExMatch.Success then
-    Exit(False);
+  begin
+    RegExMatch := TRegEx.Match(Step.ConvertDiactritics, S, [TRegExOption.roIgnoreCase]);
+    if not RegExMatch.Success then
+      Exit(False);
+  end;
 
   SetLength(Values, RegExMatch.Groups.Count - 1);
   if Assigned(Step.DataTable) then
@@ -435,6 +440,13 @@ end;
 procedure TScenarioOutline.SetExamples(Examples: IDataTable);
 begin
   FExamples := Examples;
+end;
+
+function TScenario.TStep.ConvertDiactritics: string;
+type
+  USASCIIString = type AnsiString(20127);//20127 = us ascii
+begin
+  Result := String(USASCIIString(self.FValue));
 end;
 
 end.

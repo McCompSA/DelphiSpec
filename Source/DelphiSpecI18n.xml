@@ -26,6 +26,27 @@
     <And>But</And>
     <Examples>Examples</Examples>
   </EN>
+  <PL>
+    <Feature>Funkcjonalność</Feature>
+    <Feature>Funkcja</Feature>
+    <Feature>Potrzeba biznesowa</Feature>    
+    <Background>Kontekst</Background>
+    <Background>Opis</Background>
+    <Scenario>Scenariusz</Scenario>
+    <ScenarioOutline>Szablon scenariusza</ScenarioOutline>
+    <ScenarioOutline>Scenariusz wg szablonu</ScenarioOutline>
+    <Given>Zakładając że</Given>
+    <Given>Mając</Given>
+    <When>Gdy</When>
+    <When>Kiedy</When>
+    <When>Jeśli</When>
+    <When>Jeżeli</When>
+    <Then>Wtedy</Then>
+    <Then>To</Then>
+    <And>i</And>
+    <And>Oraz</And>
+    <Examples>Przykłady</Examples>
+  </PL>
   <PT_BR>
     <Feature>Funcionalidade</Feature>
     <Background>Conhecimento</Background>
