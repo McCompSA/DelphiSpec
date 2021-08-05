@@ -478,18 +478,24 @@ var
   I: Integer;
   LangNode: IXMLNode;
   StepKindName: string;
+  nodeName: string;
+  nodeValue: OleVariant;
 begin
   Result := False;
   LangNode := FLangXML.DocumentElement.ChildNodes.FindNode(LangCode);
   StepKindName := GetStepKindAsString(StepKind);
 
   for I := 0 to LangNode.ChildNodes.Count - 1 do
-    if (LangNode.ChildNodes[I].NodeName = StepKindName) and
-      (StartsText(LangNode.ChildNodes[I].NodeValue + ' ', S) or StartsText(LangNode.ChildNodes[I].NodeValue + ':', S)) then
+  begin
+    nodeName := LangNode.ChildNodes[I].NodeName;
+    nodeValue := LangNode.ChildNodes[I].NodeValue;
+    if (nodeName = StepKindName) and
+      (StartsText(nodeValue + ' ', S) or StartsText(nodeValue + ':', S)) then
     begin
       Result := True;
       Break;
     end;
+  end;
 end;
 
 class function TDelphiSpecLanguages.GetStepText(StepKind: TStepKind; const S: string; const LangCode: string): string;
