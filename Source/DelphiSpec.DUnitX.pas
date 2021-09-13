@@ -13,6 +13,7 @@ implementation
 
 uses
   DUnitX.TestFramework,
+  DUnitX.Exceptions,
   DelphiSpec.Assert,
   DelphiSpec.StepDefinitions;
 

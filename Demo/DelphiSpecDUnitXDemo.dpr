@@ -10,7 +10,6 @@ uses
   Classes,
   DelphiSpec.Core,
   DelphiSpec.Scenario,
-  Generics.Collections,
   DUnitX.AutoDetect.Console,
   DUnitX.Loggers.Console,
   DUnitX.Loggers.Xml.NUnit,
@@ -27,7 +26,7 @@ var
   results : IRunResults;
   logger : ITestLogger;
   nunitLogger : ITestLogger;
-  Features: TObjectList<TFeature>;
+  Features: TFeatureList;
 begin
   ReportMemoryLeaksOnShutdown := True;
 
